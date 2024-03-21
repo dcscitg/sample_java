@@ -15,7 +15,7 @@ pipeline {
                 // Replace 'Maven 3.6.3' with the name of your Maven installation in Jenkins
                 // Specify the Maven goals and options as needed (e.g., clean, package, -DskipTests)
                 script {
-                    def mvnHome = tool 'Maven 3.6.3'
+                    def mvnHome = tool 'Maven 3.9.6'
                     if (mvnHome) {
                         sh "${mvnHome}/bin/mvn -B -DskipTests clean package"
                     } else {
