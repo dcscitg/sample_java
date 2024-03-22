@@ -1,27 +1,25 @@
+package com.mycompany.app;
 
-import org.junit.Test;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
 
-public class HelloWorldTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+/**
+ * Unit test for simple App.
+ */
+public class AppTest
+{
+    @Test
+    public void testAppConstructor() {
+        App app1 = new App();
+        App app2 = new App();
+        assertEquals(app1.getMessage(), app2.getMessage());
+    }
 
     @Test
-    public void testMainMethod() {
-        // Redirect standard output to a buffer
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
-
-        // Call the main method of HelloWorld
-        HelloWorld.main(new String[]{});
-
-        // Get the output from the buffer
-        String output = outputStream.toString().trim();
-
-        // Assert that the output contains "Hello worlds!"
-        assertTrue(output.contains("Hello worlds!"));
-
-        // Reset standard output
-        System.setOut(System.out);
+    public void testAppMessage()
+    {
+        App app = new App();
+        assertEquals("Hello worlds!", app.getMessage());
     }
 }
