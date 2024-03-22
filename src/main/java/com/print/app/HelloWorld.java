@@ -1,7 +1,19 @@
 package com.print.app;
 
-public class HelloWorld {
-  public static void main(String[] args) {
-    System.out.println("Hello worlds!");
-}
+/**
+ * Hello world!
+ */
+public class App {
+
+    private static final String MESSAGE = "Hello World!";
+
+    public App() {}
+
+    public static void main(String[] args) {
+        System.out.println(MESSAGE);
+    }
+
+    public String getMessage() {
+        return MESSAGE;
+    }
 }
