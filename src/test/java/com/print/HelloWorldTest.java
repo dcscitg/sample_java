@@ -11,15 +11,15 @@ public class HelloWorldTest
 {
     @Test
     public void testAppConstructor() {
-        App app1 = new App();
-        App app2 = new App();
+        HelloWorldTest app1 = new App();
+        HelloWorldTest app2 = new App();
         assertEquals(app1.getMessage(), app2.getMessage());
     }
 
     @Test
     public void testAppMessage()
     {
-        App app = new App();
+        HelloWorldTest app = new App();
         assertEquals("Hello worlds!", app.getMessage());
     }
 }
