@@ -5,7 +5,7 @@ package com.print.app;
  */
 public class App {
 
-    private static final String MESSAGE = "Hello World!";
+    private static final String MESSAGE = "Hello Worlds!";
 
     public App() {}
 
