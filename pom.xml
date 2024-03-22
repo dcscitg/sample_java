@@ -2,12 +2,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.example</groupId>
     <artifactId>hello-world</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Hello World Application</name>
     <url>https://example.com</url>
 
+    <!-- Dependencies -->
     <dependencies>
         <!-- JUnit Dependency for testing -->
         <dependency>
@@ -18,31 +20,20 @@
         </dependency>
     </dependencies>
 
-<build>
-    <plugins>
-        <!-- Maven Compiler Plugin -->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.8.1</version>
-            <configuration>
-                <source>11</source>
-                <target>11</target>
-            </configuration>
-        </plugin>
-        <!-- Surefire Plugin for test execution and reporting -->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.22.2</version>
-            <configuration>
-                <includes>
-                    <include>**/Test*.java</include>
-                </includes>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
-
+    <!-- Build configuration -->
+    <build>
+        <plugins>
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
 
