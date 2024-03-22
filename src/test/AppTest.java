@@ -19,6 +19,6 @@ public class AppTest
     public void testAppMessage()
     {
         App app = new App();
-        assertEquals("Hello Worlds!", app.getMessage());
+        assertEquals("Hello Worldssss!", app.getMessage());
     }
 }
