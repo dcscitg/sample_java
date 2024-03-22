@@ -5,21 +5,22 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Unit test for simple App.
+ * Unit test for simple HelloWorld.
  */
 public class HelloWorldTest
 {
     @Test
-    public void testAppConstructor() {
-        HelloWorldTest app1 = new HelloWorldTest();
-        HelloWorldTest app2 = new HelloWorldTest();
-        assertEquals(app1.getMessage(), app2.getMessage());
+    public void testHelloWorldConstructor() {
+        HelloWorld hello1 = new HelloWorld();
+        HelloWorld hello2 = new HelloWorld();
+        assertEquals(hello1.getMessage(), hello2.getMessage());
     }
 
     @Test
-    public void testAppMessage()
+    public void testHelloWorldMessage()
     {
-        HelloWorldTest app = new HelloWorldTest();
-        assertEquals("Hello worlds!", app.getMessage());
+        HelloWorld hello = new HelloWorld();
+        assertEquals("Hello World!", hello.getMessage());
     }
 }
+
