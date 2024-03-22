@@ -1,4 +1,4 @@
-package com.print.app
+package com.print.app;
 
 public class HelloWorld {
   public static void main(String[] args) {
