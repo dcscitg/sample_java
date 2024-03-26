@@ -25,13 +25,9 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             steps {
+                // Run SonarQube analysis using SonarScanner
                 withSonarQubeEnv('sonarqube') {
-                    sh '''mvn clean verify sonar:sonar \
-                    -Dsonar.projectKey=sonar_test \
-                    -Dsonar.projectName='sonar_test' \
-                    -Dsonar.host.url=http://localhost:9000 \
-                    -Dsonar.token=sqp_6d0a6ed292eb7e0a7a6db6f61dc7885e3be35a79'''
-                    echo 'SonarQube Analysis Completed'
+                    sh 'mvn clean verify sonar:sonar'
                 }
             }
         }
