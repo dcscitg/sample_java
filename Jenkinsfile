@@ -1,7 +1,3 @@
-
-
-
-
 pipeline {
     agent any
     options {
@@ -24,10 +20,14 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
-            def mvn = tool 'Default Maven';
-             withSonarQubeEnv() {
-             sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonar_test -Dsonar.projectName='sonar_test'"
-             }
+            steps {
+                script {
+                    def mvn = tool 'Default Maven'
+                    withSonarQubeEnv() {
+                        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonar_test -Dsonar.projectName='sonar_test'"
+                    }
+                }
+            }
         }
         stage('Deliver') { 
             steps {
@@ -36,9 +36,6 @@ pipeline {
         }
     }
 }
-
-
-
 
 
 
