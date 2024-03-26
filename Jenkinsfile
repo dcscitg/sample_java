@@ -23,8 +23,9 @@ pipeline {
             steps {
                 script {
                     def mvn = tool 'Default Maven'
-                    withSonarQubeEnv() {
+                    withSonarQubeEnv(sonarqube) {
                         sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonar_test -Dsonar.projectName='sonar_test'"
+                        echo 'SonarQube Analysis Completed'
                     }
                 }
             }
