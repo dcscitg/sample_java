@@ -19,14 +19,18 @@ pipeline {
                 }
             }
         }
+        stage('Git Checkout') {
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/dcscitg/sample_java.git']])
+                echo 'Git Checkout Completed'
+            }
+        }
+
         stage('SonarQube Analysis') {
             steps {
-                script {
-                    def mvn = tool 'Default Maven'
-                    withSonarQubeEnv(sonarqube) {
-                        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonar_test -Dsonar.projectName='sonar_test'"
-                        echo 'SonarQube Analysis Completed'
-                    }
+                withSonarQubeEnv('sonarqube') {
+                    sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonar_test -Dsonar.projectName='sonar_test -Dsonar.host.url=http://localhost:9000'"
+                    echo 'SonarQube Analysis Completed'
                 }
             }
         }
