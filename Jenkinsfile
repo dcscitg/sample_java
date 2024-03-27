@@ -1,20 +1,18 @@
+User
 pipeline {
     agent any
     options {
         skipStagesAfterUnstable()
     }
-    environment {
-        mvn = tool 'MyMaven' // Replace 'MyMaven' with the actual name of your Maven tool
-    }
     stages {
         stage('Build') {
             steps {
-                sh "${mvn}/bin/mvn -B -DskipTests clean package"
+                sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
             steps {
-                sh "${mvn}/bin/mvn test"
+                sh 'mvn test'
             }
             post {
                 always {
@@ -28,10 +26,11 @@ pipeline {
                 echo 'Git Checkout Completed'
             }
         }
+
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sonarqube') {
-                    sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonar_test -Dsonar.projectName='sonar_test' -Dsonar.host.url=http://1t:9000"
+                    sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonar_test -Dsonar.projectName='sonar_test -Dsonar.host.url=http://1t:9000'"
                     echo 'SonarQube Analysis Completed'
                 }
             }
