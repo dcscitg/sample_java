@@ -41,7 +41,7 @@ pipeline {
         stage('Deliver') { 
             steps {
                 sh 'chmod +x deploy.sh'
-                sh "java -jar target/${env.JAR_NAME}"
+                sh "./depoly.sh"
             }
         }
     }
