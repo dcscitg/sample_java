@@ -1,4 +1,3 @@
-User
 pipeline {
     agent any
     options {
