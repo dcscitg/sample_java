@@ -29,7 +29,8 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sonarqube') {
-                    sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonar_test -Dsonar.projectName='sonar_test -Dsonar.host.url=http://1t:9000'"
+                    def mvn = tool 'maven';
+                    sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonar_test -Dsonar.projectName='sonar_test -Dsonar.host.url=http://192.168.2.248:9000'"
                     echo 'SonarQube Analysis Completed'
                 }
             }
