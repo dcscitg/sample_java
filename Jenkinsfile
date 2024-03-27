@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     withSonarQubeEnv('sonarqube') {
-                        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sample_java -Dsonar.projectName='sample_java' -Dsonar.host.url=http://192.168.2.247:9000 -Dsonar.login=sqp_a8991c2ffea16facc46421e59ac07501da3ac843"
+                        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sample_java -Dsonar.projectName='sample_java' -Dsonar.host.url=http://192.168.2.247:9000 -Dsonar.login=sqa_d2329926969500dc523e2f0b853a1dcff7883f54"
                         echo 'SonarQube Analysis Completed'
                     }
                 }
