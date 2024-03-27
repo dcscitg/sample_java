@@ -11,13 +11,13 @@ set +x
 echo 'The following command extracts the value of the <name/> element'
 echo 'within <project/> of your Java/Maven project''s "pom.xml" file.'
 set -x
-NAME=$(mvn help:evaluate -Dexpression=project.artifactId -DforceStdout)
+NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
 set +x
 
 echo 'The following command behaves similarly to the previous one but'
 echo 'extracts the value of the <version/> element within <project/> instead.'
 set -x
-VERSION=$(mvn help:evaluate -Dexpression=project.version -DforceStdout)
+VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
 set +x
 
 echo 'The following command runs and outputs the execution of your Java'
