@@ -41,7 +41,7 @@ pipeline {
         stage('Deliver') { 
             steps {
                 sh 'chmod +x deploy.sh'
-                sh "./depoly.sh"
+                sh './deploy.sh'
             }
         }
     }
