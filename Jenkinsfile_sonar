@@ -1,24 +1,12 @@
-pipeline {
-    agent any
-    stages {
-        stage('Git Checkout') {
-            steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/dcscitg/sample_java.git']])
-                echo 'Git Checkout Completed'
-            }
-        }
-
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('sonarqube') {
-                    sh '''mvn clean verify sonar:sonar \
-                    -Dsonar.projectKey=sonar_test \
-                    -Dsonar.projectName='sonar_test' \
-                    -Dsonar.host.url=http://localhost:9000 \
-                    -Dsonar.token=sqp_6d0a6ed292eb7e0a7a6db6f61dc7885e3be35a79'''
-                    echo 'SonarQube Analysis Completed'
-                }
-            }
-        }
+node {
+  stage('SCM') {
+    checkout scm
+  }
+  
+  stage('SonarQube Analysis') {
+    def mvn = tool 'maven';
+    withSonarQubeEnv() {
+      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonar_test -Dsonar.projectName='sonar_test'"
     }
+  }
 }
