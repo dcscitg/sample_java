@@ -3,15 +3,18 @@ pipeline {
     options {
         skipStagesAfterUnstable()
     }
+    environment {
+        mvn = tool 'maven'
+    }
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh "${mvn}/bin/mvn -B -DskipTests clean package"
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh "${mvn}/bin/mvn test"
             }
             post {
                 always {
@@ -25,13 +28,13 @@ pipeline {
                 echo 'Git Checkout Completed'
             }
         }
-
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('sonarqube') {
-                    def mvn = tool 'maven';
-                    sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonar_test -Dsonar.projectName='sonar_test -Dsonar.host.url=http://192.168.2.248:9000'"
-                    echo 'SonarQube Analysis Completed'
+                script {
+                    withSonarQubeEnv('sonarqube') {
+                        sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=sonar_test -Dsonar.projectName='sonar_test' -Dsonar.host.url=http://192.168.2.248:9000"
+                        echo 'SonarQube Analysis Completed'
+                    }
                 }
             }
         }
